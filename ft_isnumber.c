@@ -1,28 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear.c                                      :+:      :+:    :+:   */
+/*   ft_isnumber.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eamsalem <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/17 10:34:51 by eamsalem          #+#    #+#             */
-/*   Updated: 2024/05/15 15:11:12 by eamsalem         ###   ########.fr       */
+/*   Created: 2024/05/16 18:28:51 by eamsalem          #+#    #+#             */
+/*   Updated: 2024/05/17 10:11:01 by eamsalem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h> 
 
-void	ft_lstclear(t_list **lst)
+bool	ft_isnumber(char *str)
 {
-	t_list	*tmp;
+	int	i;
 
-	if (!lst || !*lst)
-		return ;
-	while (lst && *lst)
+	i = 0;
+	if (ft_isdigit(str[i]) || str[i] == '-')
+		i++;
+	else
+		return (false);
+	while (str[i])
 	{
-		tmp = (*lst)->next;
-		ft_lstdelone(*lst);
-		*lst = tmp;
+		if (!ft_isdigit(str[i]))
+			return (false);
 	}
+	return (true);
 }

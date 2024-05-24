@@ -1,28 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear.c                                      :+:      :+:    :+:   */
+/*   ft_putchar_count.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eamsalem <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/17 10:34:51 by eamsalem          #+#    #+#             */
-/*   Updated: 2024/05/15 15:11:12 by eamsalem         ###   ########.fr       */
+/*   Created: 2024/04/19 18:27:32 by eamsalem          #+#    #+#             */
+/*   Updated: 2024/04/20 14:08:50 by eamsalem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <stdlib.h> 
+#include <unistd.h>
 
-void	ft_lstclear(t_list **lst)
+int	ft_putchar_count(char c)
 {
-	t_list	*tmp;
-
-	if (!lst || !*lst)
-		return ;
-	while (lst && *lst)
-	{
-		tmp = (*lst)->next;
-		ft_lstdelone(*lst);
-		*lst = tmp;
-	}
+	write(1, &c, 1);
+	return (1);
 }

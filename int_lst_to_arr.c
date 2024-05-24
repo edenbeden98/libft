@@ -1,28 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear.c                                      :+:      :+:    :+:   */
+/*   int_lst_to_arr.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eamsalem <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/17 10:34:51 by eamsalem          #+#    #+#             */
-/*   Updated: 2024/05/15 15:11:12 by eamsalem         ###   ########.fr       */
+/*   Created: 2024/05/23 10:29:23 by eamsalem          #+#    #+#             */
+/*   Updated: 2024/05/23 10:31:09 by eamsalem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h> 
 
-void	ft_lstclear(t_list **lst)
+int	*int_lst_to_arr(int_lst *lst, int size)
 {
-	t_list	*tmp;
-
-	if (!lst || !*lst)
-		return ;
-	while (lst && *lst)
+	int	*arr;
+	int	i;
+	
+	if (!lst || !(lst) || size < 0)
+		return (NULL);
+	arr = malloc(sizeof(int) * size);
+	if (!arr)
+		return (NULL);
+	i = 0;
+	while (i < size)
 	{
-		tmp = (*lst)->next;
-		ft_lstdelone(*lst);
-		*lst = tmp;
+		arr[i++] = lst->content;
+		lst = lst->next;
 	}
+	return (arr);
 }

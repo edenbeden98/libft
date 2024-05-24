@@ -1,28 +1,33 @@
+
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear.c                                      :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eamsalem <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/17 10:34:51 by eamsalem          #+#    #+#             */
-/*   Updated: 2024/05/15 15:11:12 by eamsalem         ###   ########.fr       */
+/*   Created: 2024/04/14 13:34:24 by eamsalem          #+#    #+#             */
+/*   Updated: 2024/04/15 13:13:40 by eamsalem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h> 
+#include <stddef.h> 
 
-void	ft_lstclear(t_list **lst)
+int	*int_arrlcpy(int *dest, int *src, int size)
 {
-	t_list	*tmp;
+	int	i;
+	int *tmp;
 
-	if (!lst || !*lst)
-		return ;
-	while (lst && *lst)
+	if (!src || !dest)
+		return (NULL);
+	i = 0;
+	tmp = dest;
+	while (i < size)
 	{
-		tmp = (*lst)->next;
-		ft_lstdelone(*lst);
-		*lst = tmp;
+		*tmp = *src;
+		tmp++;
+		src++;
 	}
+	return (dest);
 }

@@ -6,7 +6,7 @@
 /*   By: eamsalem <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/14 12:45:22 by eamsalem          #+#    #+#             */
-/*   Updated: 2024/04/19 13:03:06 by eamsalem         ###   ########.fr       */
+/*   Updated: 2024/05/23 10:32:39 by eamsalem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,10 @@
 # define LIBFT_H
 
 # include <stddef.h>
+# include <unistd.h>
+# include <stdbool.h>
+# include <stddef.h> 
+# include <stdlib.h> 
 
 int			ft_isalpha(char c);
 
@@ -100,12 +104,63 @@ t_list		*ft_lstlast(t_list *lst);
 
 void		ft_lstadd_back(t_list **lst, t_list *new);
 
-void		ft_lstdelone(t_list *lst, void (*del)(void *));
+void		ft_lstdelone(t_list *lst);
 
-void		ft_lstclear(t_list **lst, void (*del)(void *));
+void		ft_lstclear(t_list **lst);
 
 void		ft_lstiter(t_list *lst, void (*f)(void *));
 
-t_list		*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+t_list		*ft_lstmap(t_list *lst, void *(*f)(void *));
+
+int			chrsetcmp(char c, char *set);
+
+int			intsetcmp(int c, int *set, int size);
+
+int			ft_putaddr(void *ptr);
+
+int			ft_putchar_count(char c);
+
+int			ft_putnbr_base(unsigned int nbr, char *base);
+
+int			ft_putnbr_count(int n);
+
+int			ft_putstr_count(char *s);
+
+int			ft_putuslong_base(unsigned long nbr, char *base);
+
+int			ft_putusnbr(unsigned int n);
+
+int			ft_printf(const char *format, ...);
+
+bool		ft_isnumber(char *str);
+
+int			*int_arrlcpy(int *dest, int *src, int size);
+
+int			*int_arrtrunc(int *src, int size);
+
+typedef struct int_lst
+{
+	int				content;
+	struct int_lst	*next;
+	struct int_lst	*prev;
+}	int_lst;
+
+int_lst		*int_lstnew(int content);
+
+void		int_lstadd_front(int_lst **lst, int_lst *new);
+
+int			int_lstsize(int_lst *lst);
+
+int_lst		*int_lstlast(int_lst *lst);
+
+void		int_lstadd_back(int_lst **lst, int_lst *new);
+
+void		int_lstdelone(int_lst *lst);
+
+void		int_lstdel_front(int_lst **lst);
+
+void		int_lstclear(int_lst **lst);
+
+int			*int_lst_to_arr(int_lst *lst, int size);
 
 #endif
